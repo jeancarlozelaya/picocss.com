@@ -1,0 +1,30 @@
+<h2>Encuentra tus productos en Shein</h2>
+<p>Escribe lo que desees buscar:</p>
+
+<!-- Input para la búsqueda -->
+<input id="searchQuery" required="" type="text" placeholder="Ejemplo: Lencería sexy" />
+
+<!-- Enlace para buscar en Shein -->
+<p>
+    <a id="dynamicLink" style="display: inline-block; padding: 10px 20px; background-color: #ff5a5f; color: white; text-decoration: none; border-radius: 5px;" 
+       href="https://us.shein.com/" target="_blank" rel="noopener noreferrer">
+       Buscar en Shein
+    </a>
+</p>
+
+<!-- Script JavaScript para manejar la búsqueda -->
+<script>
+    // Función para actualizar el enlace de Shein basado en el texto ingresado
+    function updateLink() {
+        const query = document.getElementById("searchQuery").value.trim();
+        const sheinUrl = `https://us.shein.com/pdsearch/${encodeURIComponent(query)}?ici=s1EditSearch${encodeURIComponent(query)}_fbd0PageHome&search_source=1&search_type=all&source=search&src_identifier=st%3D2%60sc%3D${encodeURIComponent(query)}%60sr%3D0%60ps%3D1&src_identifier_pre_search=&src_module=search&src_tab_page_id=page_home1730078017541`;
+        
+        // Actualiza el href del enlace
+        const dynamicLink = document.getElementById("dynamicLink");
+        dynamicLink.href = sheinUrl;
+        dynamicLink.textContent = query ? `Buscar en Shein` : "Buscar en Shein";
+    }
+
+    // Escucha el evento de entrada en el campo de texto
+    document.getElementById("searchQuery").addEventListener('input', updateLink);
+</script>
